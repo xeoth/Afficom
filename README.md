@@ -3,7 +3,7 @@
 
 You can invite the bot [with this invite link](https://discordapp.com/oauth2/authorize?client_id=592661179688812545&permissions=8&scope=bot)
 
-Afficom is a Discord bot I decided to make for the [Discord Hack Week](https://discord.gg/hackweek).
+Afficom is a Discord bot I decided to make for the [Discord Hack Week](https://discord.gg/hackweek). Right now it only has advanced, Tensorflow powered automoderation system, but maybe I'll add more features as the time goes on.
 ## Authors
 - Xeoth#1842
 
