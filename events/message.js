@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
   
@@ -11,9 +11,9 @@ module.exports = (client, message) => {
     
       const thr = 0.75;
     
-      toxicity.load(thr).then(model => {
+      toxicity.load(thr).then(async model => {
         const sentence = message.content
-        model.classify(sentence).then(predictions => {
+        model.classify(sentence).then(async predictions => {
           if (predictions[6].results[0].match === true) {
             //Setting the emojis
             var names = ['identity', 'insult', 'obscene', 'severe', 'sexuallyexpl', 'threat']
@@ -37,12 +37,30 @@ module.exports = (client, message) => {
               .addField("Severely toxic", names[3], true)
               .addField("Sexually explicit", names[4], true)
               .addField("Threat", names[5], true)
+              .setFooter("🗑️ - delete the message, 🚫 - keep the message")
               .setColor("ff0000")
             
             //Find the channel (and check whether it exists) and send the message
             const filterChannel = message.guild.channels.find(x => x.name === "filtered-messages")
             if (!filterChannel) return
-            filterChannel.send(detectedMessageEmbed)
+            const sentMessage = await filterChannel.send(detectedMessageEmbed)
+            //Ability to take actions on messages via reactions
+            await sentMessage.react("🗑")
+            await sentMessage.react("🚫")
+            sentMessage.createReactionCollector((reaction, user) =>
+              message.guild.member(user).permissions.has("MANAGE_MESSAGES") &&
+              reaction.emoji.name === '🗑' ||
+              reaction.emoji.name === '🚫' &&
+              user.bot === false
+            ).once("collect", reaction => {
+              const chosen = reaction.emoji.name
+              if (chosen === '🗑') {
+                sentMessage.clearReactions()
+                return message.delete(0)
+              } else if (chosen === '🚫') {
+                sentMessage.clearReactions()
+              }
+            })
           }
         })
       })
