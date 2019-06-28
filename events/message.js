@@ -36,6 +36,7 @@ module.exports = (client, message) => {
               .addField("Threat", names[5], true)
               .setColor("ff0000")
             const filterChannel = message.guild.channels.find(x => x.name === "filtered-messages")
+            if (!filterChannel) return
             filterChannel.send(detectedMessageEmbed)
           }
         })
