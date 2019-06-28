@@ -41,7 +41,7 @@ module.exports = async (client, message) => {
               .setColor("ff0000")
             
             //Find the channel (and check whether it exists) and send the message
-            const filterChannel = message.guild.channels.find(x => x.name === "filtered-messages")
+            const filterChannel = message.guild.channels.find(x => x.name === "afficom-filtered-messages")
             if (!filterChannel) return
             const sentMessage = await filterChannel.send(detectedMessageEmbed)
             //Ability to take actions on messages via reactions
