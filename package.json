@@ -5,6 +5,7 @@
   "main": "main.js",
   "author": "Xeoth#1842",
   "dependencies": {
+    "@tensorflow-models/toxicity": "^1.1.0",
     "@tensorflow/tfjs": "^1.2.2",
     "discord.js": "^11.4.2",
     "enmap": "^5.0.0",
