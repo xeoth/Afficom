@@ -23,11 +23,14 @@ module.exports = (client, message) => {
                 names[i] = "✅"
               } else if (predictions[i].results[0].match === false) {
                 names[i] = "❎"
+              } else {
+                names[i] = "❓"
               }
             }
             const detectedMessageEmbed = new Discord.RichEmbed()
               .setTitle("Potentially toxic message detected!")
-              .addField("Message content", message.content)
+              .addField("Message content", `${message.content} ([jump to message](${message.url}))`)
+              .addField("Message author", `${message.author.tag} \`ID: ${message.author.id}\``)
               .addField("Identity attack", names[0], true)
               .addField("Insult", names[1], true)
               .addField("Obscene", names[2], true)
@@ -35,6 +38,8 @@ module.exports = (client, message) => {
               .addField("Sexually explicit", names[4], true)
               .addField("Threat", names[5], true)
               .setColor("ff0000")
+            
+            //Find the channel (and check whether it exists) and send the message
             const filterChannel = message.guild.channels.find(x => x.name === "filtered-messages")
             if (!filterChannel) return
             filterChannel.send(detectedMessageEmbed)
