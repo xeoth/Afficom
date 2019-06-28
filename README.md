@@ -1,3 +1,4 @@
+![logo](https://i.imgur.com/4JGd7Vv.png)
 # Afficom
 
 You can invite the bot [with this invite link](https://discordapp.com/oauth2/authorize?client_id=592661179688812545&permissions=8&scope=bot)
