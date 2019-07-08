@@ -1,19 +1,8 @@
 {
-  "name": "afficom",
-  "version": "1.0",
-  "description": "Discord bot.",
-  "main": "main.js",
-  "author": "Xeoth#1842",
   "dependencies": {
-    "@tensorflow-models/toxicity": "^1.1.0",
+    "@tensorflow-models/toxicity": "^1.1.1",
     "@tensorflow/tfjs": "^1.2.2",
-    "discord.js": "^11.4.2",
-    "enmap": "^5.0.0",
-    "es6-promise": "^4.2.5",
-    "mongoose": "^5.6.1",
-    "querystring": "^0.2.0",
-    "r2": "^2.0.1",
-    "snekfetch": "^4.0.4",
-    "winston": "^3.1.0"
+    "discord.js": "^11.5.1",
+    "enmap": "^5.0.0"
   }
 }

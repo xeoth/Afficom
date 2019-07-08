@@ -1,4 +1,5 @@
 {
     "token": "YOUR-BOT-TOKEN-HERE",
-    "prefix": "af!"
+    "prefix": "af!",
+    "ownerID": "OWNER-ID-HERE"
 }
