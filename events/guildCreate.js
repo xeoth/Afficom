@@ -1,4 +1,4 @@
-const translation = require(`./translations/english.json`)
+const translation = require(`../translations/english.json`)
 
 module.exports = async (client, member) => {
     const requestedChannel = member.channels.find(x => x.name === "afficom-filtered-messages")
