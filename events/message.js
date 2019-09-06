@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
+const translation = require(`../translations/english.json`)
 
-module.exports = async (client, message) => {
+module.exports = async (client, message, member) => {
     // Ignore all bots
     if (message.author.bot) return;
   
@@ -55,9 +56,11 @@ module.exports = async (client, message) => {
             ).once("collect", reaction => {
               const chosen = reaction.emoji.name
               if (chosen === '🗑') {
+                if (!member.me.hasPermission('MANAGE_MESSAGES')) return;
                 sentMessage.clearReactions()
                 return message.delete(0)
               } else if (chosen === '🚫') {
+                if (!member.me.hasPermission('MANAGE_MESSAGES')) return;
                 sentMessage.clearReactions()
               }
             })

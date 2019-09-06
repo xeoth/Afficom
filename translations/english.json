@@ -1,4 +1,3 @@
 {
-    "missingPerms_managemessages": "Hello!\nIt seems like I'm missing the following permission in your server: *manage messages*. Please consider granting me the permission, as the bot may malfuncion without it.\nThanks!",
     "description_detectedChannel": "This is the channel in which all detected messages will be waiting for review. Please, __do not delete or change the name of this channel!__"
 }

@@ -1,9 +1,13 @@
 const translation = require(`../translations/english.json`)
 
 module.exports = async (client, member) => {
+    //Checking permissions
+    const manageChannels = member.me.hasPermission('MANAGE_CHANNELS');
+    const manageMessages = member.me.hasPermission('MANAGE_MESSAGES');
+    if (manageChannels === false || manageMessages === false) return;
+
     const requestedChannel = member.channels.find(x => x.name === "afficom-filtered-messages")
     if (!requestedChannel) {
-        if (!member.me.hasPermission('MANAGE_CHANNELS')) return member.owner.send(translation.missingPerms_managechannels);
         const filterChannel = await member.createChannel('afficom-filtered-messages')
         filterChannel.overwritePermissions(client.user.id, {
             VIEW_CHANNEL: true,
@@ -14,7 +18,6 @@ module.exports = async (client, member) => {
             VIEW_CHANNEL: false
         })
         const sentMessage = await filterChannel.send(translation.description_detectedChannel)
-        if (!member.me.hasPermission('MANAGE_MESSAGES')) return member.owner.send(translation.missingPerms_managemessages);
         sentMessage.pin()
     }
 }
