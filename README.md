@@ -1,3 +1,9 @@
+# Disclaimer
+
+Yeah it's been a while since I made that bot. The code quality is rather poor, and I don't generally recommend you use it. It's an example of code I used to write, and I often use it to compare it against my present code quality to see how much I've learned.
+
+---
+
 ![logo](https://i.imgur.com/4JGd7Vv.png)
 # Afficom
 
